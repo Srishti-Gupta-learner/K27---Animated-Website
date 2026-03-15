@@ -46,6 +46,12 @@ const Agent = () => {
         end:'top -70%',
         scrub:true,
         pin :true,
+        pinSpacing: true,
+        pinReparent: true,
+        pinType: 'transform',
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+
         onUpdate:(elem)=>{
           let imageIndex ;
           if(elem.progress<1){
@@ -60,9 +66,9 @@ const Agent = () => {
   })
 
   return (
-    <div>
-      <div className="section1 h-screen">
-      <div ref={imgDivref} className="absolute h-[20vw] w-[15vw] top-50 left-120 rounded-3xl bg-red-50">
+    <div >
+      <div className="section1 h-screen py-1">
+      <div ref={imgDivref} className="absolute h-[20vw] w-[15vw] top-50 left-120 rounded-3xl bg-red-50 ">
         <img ref={imageRef} src="https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg" alt="agent1" />
       </div>
 
