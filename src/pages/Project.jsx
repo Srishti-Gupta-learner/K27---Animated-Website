@@ -1,5 +1,7 @@
-import React from "react";
-import Card from "../components/project/Card.jsx";
+import { useGSAP } from '@gsap/react'
+import Card from '../components/project/Card'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
 
 const Project = () => {
  
@@ -12,8 +14,34 @@ const Project = () => {
   }, {
     image1: 'https://k72.ca/uploads/caseStudies/LAMAJEURE_-_Son_sur_mesure/chalaxeur-thumbnail_img-1280x960.jpg',
     image2: 'https://k72.ca/uploads/caseStudies/SHELTON/thumbnailimage_shelton-1280x960.jpg'
+  }, {
+    image1: 'https://k72.ca/images/caseStudies/COUP_FUMANT/CF_thumbnail.jpg?w=1280&h=960&s=c119303a20520c4188aa3f592038fd4c',
+    image2: 'https://k72.ca/images/caseStudies/A_table/thumbnailimage_atable2.jpg?w=1280&h=960&s=b1cfc8abd6135cf78017737130e49e47'
+  }, {
+    image1: 'https://k72.ca/images/caseStudies/BAnQ_100TEMPS/100temps_Thumbnail.jpg?w=1280&h=960&s=5c944bb014f8643227ad7bb117fccc14',
+    image2: 'https://k72.ca/images/caseStudies/FRUITE/Fruite_thumbnail_bbq.jpg?w=1280&h=960&s=953c1f702bec28d66d07e95bc1261821'
+  }, {
+    image1: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZvb2R8ZW58MHx8MHx8fDA%3D',
+    image2: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c2hvZXN8ZW58MHx8MHx8fDA%3D'
   }]
 
+  gsap.registerPlugin(ScrollTrigger)
+
+  useGSAP(function(){
+    gsap.from('.hero',{
+      height:'100px',
+      stagger:{
+        amount:0.5,
+      },
+      scrollTrigger:{
+        trigger:'.lol',
+        start:'top 100%',
+        end:'top -150%',
+        scrub:true
+      }
+    })
+  })
+  
 
   return (
     <div className="p-4 bg-white text-black">
@@ -35,9 +63,11 @@ const Project = () => {
       <div className="pt-[40vh]  -mt-20 ">
         <h2 className="font-[font2] text-[9.5vw] uppercase"> Projects</h2>
       </div>
-      <div className="mt-20">
-        {projects.map(function(elem){
-          return <Card image1={elem.image1 } image2={elem.image2} />
+      <div className="mt-20 lol">
+         {projects.map(function (elem, idx) {
+          return <div key={idx} className='hero w-full lg:h-[500px] mb-4 flex lg:flex-row flex-col lg:gap-4 gap-2'>
+            <Card image1={elem.image1} image2={elem.image2} />
+          </div>
         })}
       </div>
     </div>

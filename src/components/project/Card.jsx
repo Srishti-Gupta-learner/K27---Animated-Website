@@ -2,7 +2,8 @@ import React from "react";
 
 const Card = (props) => {
   return (
-    <div className="w-full h-[60vh] flex gap-4 mb-4">
+    
+  <>
       <div className="w-1/2 group h-full relative transition-all rounded-none hover:rounded-4xl overflow-hidden">
         <img
           className="h-full w-full object-cover"
@@ -27,8 +28,9 @@ const Card = (props) => {
           </h2>
         </div>
         
-      </div>
+     
     </div>
+  </>
   );
 };
 
