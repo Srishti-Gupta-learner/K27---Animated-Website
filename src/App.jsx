@@ -7,14 +7,15 @@ import Navbar from "./components/nav/Navbar"
 import FullScreenNav from "./components/nav/FullScreenNav"
 
 
+
 function App() {
 
  
   return (
     <div className="text-white">
 
-      <Navbar/>
-      <FullScreenNav/>
+      {/* <Navbar/>
+      <FullScreenNav/> */}
        <Routes >
            <Route path="/" element={<Home/>} />
            <Route path='/agent' element={<Agent/>} />
